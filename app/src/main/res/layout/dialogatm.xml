@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_selector"
+    android:orientation="vertical">
+
+    <RadioGroup
+        android:id="@+id/rg2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rbVTHT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Vị trí hiện tại" />
+
+        <RadioButton
+            android:id="@+id/rbVTK"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Vị trí khác" />
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/edtvitri"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:ems="10"
+        android:hint="nhập vị trí "
+        android:inputType="textPersonName"
+        android:visibility="gone" />
+
+    <Spinner
+        android:id="@+id/spnNH"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20sp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="50sp"
+        android:visibility="gone" />
+
+    <RadioGroup
+        android:id="@+id/rg1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="5dp"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <RadioButton
+            android:id="@+id/rbATMQuan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="1"
+            android:text="Quận" />
+
+        <RadioButton
+            android:id="@+id/rbATMKC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Khoảng Cách" />
+
+    </RadioGroup>
+
+    <com.tanphuoc.luanvan.MutilSpinner.MultiSelectionSpinner
+        android:id="@+id/mySpinner1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Spinner
+            android:id="@+id/spATMKC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="1.64"
+            android:visibility="gone" />
+
+
+        <TextView
+            android:id="@+id/txtatmm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="mét"
+            android:textSize="18sp"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btndalogATMOK"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/button"
+            android:text="đồng ý" />
+
+        <Button
+            android:id="@+id/btndialogATMHuy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/button"
+            android:text="Hủy" />
+    </LinearLayout>
+</LinearLayout>
