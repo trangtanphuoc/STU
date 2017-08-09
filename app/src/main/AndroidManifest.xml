@@ -2,13 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.tanphuoc.luanvan">
 
-    <!--
-         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
-         Google Maps Android API v2, but you must specify either coarse or fine
-         location permissions for the 'MyLocation' functionality. 
-    -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-feature android:name="android.hardware.location" android:required="true" />
+    <uses-feature android:name="android.hardware.location.gps" android:required="true" />
 
     <application
         android:allowBackup="true"
@@ -39,20 +36,20 @@
             android:screenOrientation="sensorPortrait" />
         <activity
             android:name=".Main.MainActivity"
-            android:screenOrientation="sensorPortrait">
-            <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-        </activity>
+            android:screenOrientation="sensorPortrait" />
         <activity
             android:name=".Main.LoginActivity"
             android:screenOrientation="sensorPortrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".huongdanduongdi.HDDDActivity" />
-
+        <activity android:name=".DanhSachYeuThich.tramatmctivity" />
+        <activity android:name=".DanhSachYeuThich.TabDanhSach" />
+        <activity android:name=".DanhSachYeuThich.tramxangActivity" />
     </application>
 
 </manifest>
