@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DirectionATMNHKC {
-//    String linkTramATM="http://172.16.1.105/luanvan/GetTramATM.php";
+
     String linkTramATM="http://192.168.1.51/luanvan/GetTramATM.php";
 
     static List<TramATM> routes;

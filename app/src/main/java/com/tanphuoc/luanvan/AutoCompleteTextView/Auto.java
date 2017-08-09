@@ -49,10 +49,9 @@ public class Auto extends ArrayAdapter implements Filterable {
             protected FilterResults performFiltering(CharSequence constraint) {
                 FilterResults filterResults = new FilterResults();
                 if (constraint != null) {
-                    // Retrieve the autocomplete results.
+
                     resultList = autocomplete(constraint.toString());
 
-                    // Assign the data to the FilterResults
                     filterResults.values = resultList;
                     filterResults.count = resultList.size();
                 }
