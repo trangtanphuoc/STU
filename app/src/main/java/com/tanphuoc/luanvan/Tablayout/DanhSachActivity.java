@@ -27,6 +27,11 @@ public class DanhSachActivity extends AppCompatActivity {
 
         addControl();
         Data();
+        addEvent();
+    }
+
+    private void addEvent() {
+
     }
 
     private void addControl() {
@@ -45,32 +50,39 @@ public class DanhSachActivity extends AppCompatActivity {
                 txtTongds.setText("Có " + MapsActivity.listXangDanhSach.size() + " Trạm Xăng");
                 lvDanhSach.setAdapter(adapterTX);
             }
+            else{
+                Toast.makeText(DanhSachActivity.this, "bạn chưa chọn tìm kiếm trạm nên không có danh sách trạm ", Toast.LENGTH_SHORT).show();
+                txtTongds.setText("Bạn chưa chọn tìm kiếm trạm");
+            }
         } catch (Exception e) {
             Toast.makeText(DanhSachActivity.this, "bạn chưa chọn tìm kiếm trạm nên không có danh sách trạm ", Toast.LENGTH_SHORT).show();
             txtTongds.setText("Bạn chưa chọn tìm kiếm trạm");
             e.printStackTrace();
         }
     }
-//    @Override
-//    public boolean onKeyDown(int keyCode, KeyEvent event) {
-//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-//        builder.setTitle("Exit");
-//        builder.setMessage("Bạn có muốn đăng xuất không?");
-//        builder.setCancelable(false);
-//        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialogInterface, int i) {
-//                finish();
-//            }
-//        });
-//        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialogInterface, int i) {
-//                dialogInterface.dismiss();
-//            }
-//        });
-//        AlertDialog alertDialog = builder.create();
-//        alertDialog.show();
-//        return super.onKeyDown(keyCode, event);
-//    }
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if((keyCode == KeyEvent.KEYCODE_BACK)) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Exit");
+            builder.setMessage("Bạn có muốn đăng xuất không?");
+            builder.setCancelable(false);
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    finish();
+                }
+            });
+            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    dialogInterface.dismiss();
+
+                }
+            });
+            AlertDialog alertDialog = builder.create();
+            alertDialog.show();
+        }
+        return super.onKeyDown(keyCode, event);
+    }
 }

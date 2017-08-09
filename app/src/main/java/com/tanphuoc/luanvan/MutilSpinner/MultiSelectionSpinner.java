@@ -7,15 +7,11 @@ import android.graphics.Color;
 import android.support.v7.app.AlertDialog;
 import android.text.Html;
 import android.util.AttributeSet;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.SpinnerAdapter;
 
 import com.tanphuoc.luanvan.Moudle.Quan;
-import com.tanphuoc.luanvan.R;
-import com.tanphuoc.luanvan.Tablayout.MapsActivity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -78,7 +74,7 @@ public class MultiSelectionSpinner extends android.support.v7.widget.AppCompatSp
                 dialogInterface.dismiss();
             }
         });
-        builder.setNeutralButton("xóa tất cả", new DialogInterface.OnClickListener() {
+        builder.setNeutralButton("Xóa chọn", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int which) {
                 for (int i = 0; i < mSelection.length; i++) {
@@ -132,8 +128,13 @@ public class MultiSelectionSpinner extends android.support.v7.widget.AppCompatSp
 
         mSelection = new boolean[_items.length];
         simple_adapter.clear();
-        simple_adapter.add(_items[0]);
-        Arrays.fill(mSelection, false);
+        try{
+            simple_adapter.add(_items[0]);
+            Arrays.fill(mSelection, false);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
 
 //    public void setSelection(String[] selection) {

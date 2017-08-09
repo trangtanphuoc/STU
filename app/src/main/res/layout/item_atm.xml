@@ -4,12 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:weightSum="1">
 
     <LinearLayout
-        android:layout_width="250dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_weight="1.07">
 
         <TextView
             android:id="@+id/txtTenTramATM"
@@ -40,16 +42,34 @@
 
     </LinearLayout>
 
-    <ImageButton
-        android:id="@+id/imgtimduongATM"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="10dp"
-        android:foregroundGravity="center_vertical|center"
-        app:srcCompat="@drawable/timduong" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="0.01">
+
+        <ImageButton
+            android:id="@+id/imgbtn_YeuThich"
+            android:layout_width="41dp"
+            android:layout_height="43dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/rong_sua" />
+
+        <ImageButton
+            android:id="@+id/imgtimduongATM"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:foregroundGravity="center_vertical|center"
+            app:srcCompat="@drawable/timduong" />
+    </LinearLayout>
 
 </LinearLayout>

@@ -1,8 +1,8 @@
 package com.tanphuoc.luanvan.Adapter;
 
 import android.app.Activity;
-import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.tanphuoc.luanvan.Moudle.TramXang;
 import com.tanphuoc.luanvan.R;
@@ -19,11 +18,13 @@ import com.tanphuoc.luanvan.sqlite.Database;
 
 import java.util.List;
 
-public class AdapterTX extends BaseAdapter {
+
+
+public class AdapterTXYT extends BaseAdapter {
     Activity context;
     List<TramXang> arrayList;
 
-    public AdapterTX(Activity context, List<TramXang> arrayList) {
+    public AdapterTXYT(Activity context, List<TramXang> arrayList) {
         this.context = context;
         this.arrayList = arrayList;
     }
@@ -46,14 +47,14 @@ public class AdapterTX extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = context.getLayoutInflater();
-        convertView = inflater.inflate(R.layout.item_tramxang,null );
+        convertView = inflater.inflate(R.layout.yt_tx,null );
 
         final TextView tentram = (TextView) convertView.findViewById(R.id.txtTenTramXang);
         TextView diachi = (TextView) convertView.findViewById(R.id.txtDiaChiTramXang);
         ImageButton imgbtn = (ImageButton) convertView.findViewById(R.id.imgtimduongTX);
         ImageButton imgbtnYT = (ImageButton) convertView.findViewById(R.id.imgbtn_YeuThich);
 
-         final TramXang tramXang =arrayList.get(position);
+        final TramXang tramXang =arrayList.get(position);
         tentram.setText("Tên trạm xăng: " + tramXang.getTenTram());
         diachi.setText("Địa chỉ: " +tramXang.getDiachi());
 
@@ -68,28 +69,29 @@ public class AdapterTX extends BaseAdapter {
         imgbtnYT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                insert(tramXang);
+                del(String.valueOf(tramXang.getMaTramXang()));
             }
         });
         return convertView;
     }
 
-    private void insert(TramXang tramXang){
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("MATRAMXANG", tramXang.getMaTramXang());
-        contentValues.put("TENTRAMXANG", tramXang.getTenTram());
-        contentValues.put("DIACHI", tramXang.getDiachi());
-        contentValues.put("RATING", tramXang.getRating());
-        contentValues.put("LAT", tramXang.getLat());
-        contentValues.put("LNG", tramXang.getLng());
-        contentValues.put("QUAN", tramXang.getMaQuan());
-
-
+    private void del(String id) {
         SQLiteDatabase database = Database.initDatabase(context, "LUANVANYEUTHICH.sqlite");
-        database.insert("TRAMXANG",null, contentValues);
+        database.delete("TRAMXANG", "MATRAMXANG = ?", new String[]{id + ""});
+        arrayList.clear();
+        Cursor cursor = database.rawQuery("SELECT * FROM TRAMXANG", null);
+        for(int i = 0; i < cursor.getCount(); i++){
+            cursor.moveToPosition(i);
+            int ma = cursor.getInt(0);
+            String ten = cursor.getString(1);
+            String diachi = cursor.getString(2);
+            double rating = cursor.getDouble(3);
+            double lat = cursor.getDouble(4);
+            double lng = cursor.getDouble(5);
+            int quan = cursor.getInt(6);
 
-        Toast.makeText(context, "Đã Thêm " + tramXang.getTenTram()+" vào danh sách yêu thích", Toast.LENGTH_SHORT).show();
-
-
+            arrayList.add(new TramXang(ma, ten,diachi,(float) rating,lat,lng,quan));
+        }
+        notifyDataSetChanged();
     }
 }

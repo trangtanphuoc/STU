@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/bg_selector"
     android:orientation="vertical">
 
@@ -27,6 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Vị trí khác" />
+
     </RadioGroup>
 
     <EditText
@@ -40,6 +42,20 @@
         android:hint="nhập vị trí "
         android:inputType="textPersonName"
         android:visibility="gone" />
+
+    <AutoCompleteTextView
+        android:id="@+id/editauto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:completionThreshold="1"
+        android:ems="10"
+        android:hint="Nhập vị trí muốn tìm"
+        android:visibility="gone"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <requestFocus />
+    </AutoCompleteTextView>
 
     <Spinner
         android:id="@+id/spnNH"

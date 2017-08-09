@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DirectionATMNHQUAN {
-//    String linkTramATM="http://172.16.11.231/luanvan/GetTramATM.php";
+//    String linkTramATM="http://172.16.1.105/luanvan/GetTramATM.php";
     String linkTramATM="http://192.168.1.51/luanvan/GetTramATM.php";
 
     static List<TramATM> routes;

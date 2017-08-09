@@ -1,5 +1,8 @@
 package com.tanphuoc.luanvan.huongdanduongdi.Moudle;
 
+/**
+ * Created by Phuoc Gia on 13/04/2017.
+ */
 
 import android.os.AsyncTask;
 
@@ -22,10 +25,8 @@ import java.util.List;
 
 
 public class DirectionFinder {
-    private static final String DIRECTION_URL_API =
-            "https://maps.googleapis.com/maps/api/directions/json?";
-    private static final String GOOGLE_API_KEY =
-            "AIzaSyBGqLNfMhrE0A2oKu4TYVOVq88tWbIMA3Y";
+    private static final String DIRECTION_URL_API = "https://maps.googleapis.com/maps/api/directions/json?";
+    private static final String GOOGLE_API_KEY = "AIzaSyCYHckj15WHwqaeNh78UMPwKZ-D2E4BUtk";
     private TimDuong listener;
     private String origin;
     private String destination;

@@ -1,12 +1,13 @@
 package com.tanphuoc.luanvan.huongdanduongdi;
 
 import android.Manifest;
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.location.Criteria;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
@@ -22,6 +23,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -45,6 +47,7 @@ public class HDDDActivity extends FragmentActivity implements OnMapReadyCallback
     private List<Polyline> polylinePaths = new ArrayList<>();
     private ProgressDialog progressDialog;
     private EditText edtbatdau,edtketthuc;
+    LatLng LSTU ;
 
 
     @Override
@@ -116,14 +119,42 @@ public class HDDDActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
-        mMap.getUiSettings().setMapToolbarEnabled(false);
-        LatLng stu = new LatLng(10.738124, 106.677976);
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(stu, 18));
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+            return;
+        }
+        mMap.setMyLocationEnabled(true);
+        LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+        Criteria criteria = new Criteria();
+
+        Location lastLocation = locationManager.getLastKnownLocation(locationManager.getBestProvider(criteria, false));
+
+        if (lastLocation != null)
+        {
+            LSTU = new LatLng(lastLocation.getLatitude(), lastLocation.getLongitude());
+            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(
+                    new LatLng(lastLocation.getLatitude(), lastLocation.getLongitude()), 13));
+
+
+            CameraPosition cameraPosition = new CameraPosition.Builder()
+                    .target(new LatLng(lastLocation.getLatitude(), lastLocation.getLongitude()))
+                    .zoom(15)                   // Sets the zoom
+                    .bearing(90)                // Sets the orientation of the camera to east
+                    .tilt(40)                   // Sets the tilt of the camera to 30 degrees
+                    .build();                   // Creates a CameraPosition from the builder
+            mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+//            Toast.makeText(MapsActivity.this,lastLocation.getLatitude() +" , "+ lastLocation.getLongitude() , Toast.LENGTH_SHORT).show();
+            mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
+
+            originMarkers.add(mMap.addMarker(new MarkerOptions()
+                    .snippet("Vị trí hiện tại")
+                    .position(LSTU)));
+        }
     }
     public void onDirectionFinderStart() {
         progressDialog = ProgressDialog.show(this, "Please wait.",
-                "Finding direction..!", true);
+                "Đang tải map..!", true);
         if (originMarkers != null) {
             for (Marker marker : originMarkers) {
                 marker.remove();
@@ -151,6 +182,7 @@ public class HDDDActivity extends FragmentActivity implements OnMapReadyCallback
 
         for (Route route : routes) {
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(route.startLocation, 16));
+
             ((TextView) findViewById(R.id.tvDuration)).setText(route.duration.text);
             ((TextView) findViewById(R.id.tvDistance)).setText(route.distance.text);
 
@@ -176,9 +208,9 @@ public class HDDDActivity extends FragmentActivity implements OnMapReadyCallback
     }
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-
-                finish();
-
+        if(keyCode == KeyEvent.KEYCODE_BACK) {
+            finish();
+        }
         return super.onKeyDown(keyCode, event);
     }
 }

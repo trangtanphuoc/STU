@@ -1,9 +1,7 @@
 package com.tanphuoc.luanvan.Direction.ATM;
 
-import android.content.Context;
 import android.location.Location;
 import android.os.AsyncTask;
-import android.widget.Toast;
 
 import com.tanphuoc.luanvan.Moudle.DirectionFinderListener;
 import com.tanphuoc.luanvan.Moudle.TramATM;
@@ -23,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DirectionATMNHKC {
-//    String linkTramATM="http://172.16.11.231/luanvan/GetTramATM.php";
+//    String linkTramATM="http://172.16.1.105/luanvan/GetTramATM.php";
     String linkTramATM="http://192.168.1.51/luanvan/GetTramATM.php";
 
     static List<TramATM> routes;

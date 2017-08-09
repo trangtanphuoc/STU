@@ -21,7 +21,7 @@ import java.util.List;
 
 
 public class DirectionTXQuan {
-//    String linkTramXang="http://172.16.11.231/luanvan/GetTramXang.php";
+//    String linkTramXang="http://172.16.1.105/luanvan/GetTramXang.php";
     String linkTramXang="http://192.168.1.51/luanvan/GetTramXang.php";
 
     static List<TramXang> routes;

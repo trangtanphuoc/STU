@@ -41,6 +41,13 @@
             android:layout_weight="1"
             app:srcCompat="@drawable/vitrihientai" />
 
+        <ImageButton
+            android:id="@+id/dsyt"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_weight="16.03"
+            app:srcCompat="@drawable/dsyt" />
+
 
     </LinearLayout>
 

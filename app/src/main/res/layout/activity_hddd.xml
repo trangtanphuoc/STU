@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -14,7 +14,7 @@
         android:ems="10"
 
         android:inputType="textPersonName"
-        android:text="truong dai hoc cong nghe sai gon" />
+        android:text="trường đại học công nghệ sài gòn" />
 
     <EditText
         android:id="@+id/edtEnd"

@@ -2,7 +2,6 @@ package com.tanphuoc.luanvan.ToaDo;
 
 import android.os.AsyncTask;
 
-import com.google.android.gms.maps.model.*;
 import com.google.android.gms.maps.model.LatLng;
 import com.tanphuoc.luanvan.Moudle.DirectionFinderListener;
 
@@ -33,6 +32,7 @@ public class ToaDo {
     }
 
     public com.google.android.gms.maps.model.LatLng execute() throws UnsupportedEncodingException {
+        listener.onDirectionFinderStarttimtram();
         new DownloadRawData().execute(createUrl());
         return null;
     }

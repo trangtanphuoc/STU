@@ -28,7 +28,7 @@ public class DirectionTXKC {
 //    private static final String TYPE = "&type=";
 //    private static final String API_KEY = "&key=AIzaSyAUOx1zt79BHU9g0uFA00OydezvAd3UU1Q";
     String linkTramXang="http://192.168.1.51/luanvan/GetTramXang.php";
-//    String linkTramXang="http://172.16.11.231/luanvan/GetTramXang.php";
+//    String linkTramXang="http://172.16.1.105/luanvan/GetTramXang.php";
 
 
     private DirectionFinderListener listener;

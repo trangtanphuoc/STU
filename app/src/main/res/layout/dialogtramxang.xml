@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_selector">
     <RadioGroup
@@ -38,7 +40,19 @@
         android:hint="nhập vị trí "
         android:inputType="textPersonName"
         android:visibility="gone" />
+    <AutoCompleteTextView
+        android:id="@+id/editautoTX"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:completionThreshold="1"
+        android:ems="10"
+        android:hint="Nhập vị trí muốn tìm"
+        android:visibility="gone"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="0dp">
 
+        <requestFocus />
+    </AutoCompleteTextView>
     <RadioGroup
         android:id="@+id/rg2"
         android:layout_width="match_parent"
